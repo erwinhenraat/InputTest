@@ -8,10 +8,13 @@ public class SpawnParticles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Listen to Action Event
         MoveCharacterController.OnJumpEvent += Spawn;
     }
     void Spawn(Vector3 location) {
-        GameObject effect = Instantiate(effectPrefab);
+        //Spawn effect
+        GameObject effect = Instantiate(effectPrefab,transform);
         effect.transform.position = location;
+        Destroy(effect,1.3f);
     }
 }
