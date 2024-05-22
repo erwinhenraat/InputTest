@@ -8,6 +8,8 @@ using UnityEngine.InputSystem.Interactions;
 public class MoveCharacterController : MonoBehaviour
 {
     public static Action<Vector3> OnJumpEvent;
+
+    public PlayerStats playerStats;
    
     [SerializeField] private float rotationSpeed = 90f;   
     [SerializeField] private float moveSpeed = 500f;
@@ -23,6 +25,8 @@ public class MoveCharacterController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         velocity = Vector3.zero;
+
+        moveSpeed = playerStats.moveSpeed;
         /*
          * tried to add input an binding thrue pure code. Does not yet work
         InputAction jumpAction = new InputAction();
