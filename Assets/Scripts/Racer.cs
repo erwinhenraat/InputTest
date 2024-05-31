@@ -12,6 +12,7 @@ public class Racer : MonoBehaviour
 
     private Animator animator;
     private bool finished = false;
+    private bool lost = false;
 
     [SerializeField] private float speedIncrease = 0.2f;
 
@@ -22,12 +23,13 @@ public class Racer : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        Clock.OnTimeIsUp += Lose;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!finished)
+        if (!finished && !lost)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -85,5 +87,11 @@ public class Racer : MonoBehaviour
             animator.ResetTrigger("Run");
             OnFinish?.Invoke();
         }
+    }
+    private void Lose() {
+        lost = true;
+        animator.speed = 1;
+        animator.SetTrigger("Lose");
+        animator.ResetTrigger("Run");
     }
 }
