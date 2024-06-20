@@ -19,10 +19,11 @@ public class Clock : MonoBehaviour
     {
         TapToStart.OnStart += HandleStart;
         Racer.OnFinish += HandleFinish;
+        TapToStart.OnReset += Reset;
         timefield = GetComponent<TMP_Text>();
     }
 
-
+    
     // Update is called once per frame
     void Update()
     {        
@@ -40,13 +41,15 @@ public class Clock : MonoBehaviour
             timefield.text = minStr + " : " + secStr;
 
             if (totSeconds <= 0) {
-                OnTimeIsUp?.Invoke();
                 started = false;
+                OnTimeIsUp?.Invoke();
+                
             }
         }
     }
     private void HandleStart() {
         started = true;
+        timeElapsed = 0f;
     }
     private void HandleFinish()
     {
@@ -64,5 +67,9 @@ public class Clock : MonoBehaviour
             countStr = "0" + count.ToString();
         }
         return countStr;
+    }
+    private void Reset()
+    {
+        timefield.text = "00 : 00";
     }
 }

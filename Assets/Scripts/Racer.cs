@@ -20,10 +20,22 @@ public class Racer : MonoBehaviour
 
     [SerializeField] private float maxSpeed = 3f;
     // Start is called before the first frame update
-    void Start()
-    {
+  
+    void Awake() {
+        
         animator = GetComponent<Animator>();
         Clock.OnTimeIsUp += Lose;
+        TapToStart.OnReset += Reset;
+    }
+    private void Reset()
+    {
+        currentSpeed = 0;
+        this.transform.position = Vector3.zero;
+        lost = false;
+        finished = false;
+
+        animator.SetTrigger("Idle");
+
     }
 
     // Update is called once per frame
@@ -39,6 +51,8 @@ public class Racer : MonoBehaviour
             Animate();
             Move();
         }
+
+       
     }
   
     private void Tap() {
@@ -54,6 +68,8 @@ public class Racer : MonoBehaviour
 
     }
     private void Animate() {
+
+      
         if (currentSpeed > 0) {
 
             if(currentSpeed > maxSpeed)currentSpeed = maxSpeed;
@@ -67,8 +83,7 @@ public class Racer : MonoBehaviour
             }
         }
         else
-        {
-            
+        {            
             if (!animator.GetCurrentAnimatorStateInfo(0).Equals("Idle")) {
                 animator.speed = 1;
                 animator.SetTrigger("Idle");
