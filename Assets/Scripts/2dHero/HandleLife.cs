@@ -6,9 +6,20 @@ using UnityEngine;
 public class HandleLife : MonoBehaviour
 {
     private Animator animator;
-    [SerializeField] private int lives = 5;
+    private int lives = 5;
     public static event Action onHeroDeath;
     // Start is called before the first frame update
+
+    public int Lives {
+        get { 
+            return lives;
+        }
+        set {
+            lives = value;
+            Debug.Log("added "+ value +" life");
+        }       
+    }
+
     void Start()
     {
         animator = GetComponent<Animator>();

@@ -7,6 +7,8 @@ public class ShootFromCamera : MonoBehaviour
     void Start()
     {
         floor = new Plane(Vector3.up, 0);
+
+        Unit.OnDeath += SomeoneDied;
     }
     // Update is called once per frame
     void Update()
@@ -25,6 +27,10 @@ public class ShootFromCamera : MonoBehaviour
             }       
         }
     }
+    private void SomeoneDied() {
+        Debug.Log("boe! someone died");
+    }
+
 }
 public class MoveProj : MonoBehaviour
 {

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Player : Unit, IMovable, IDamagable
 {
-    [SerializeField] float rotationSpeed = 120f;
+    [SerializeField] private float rotationSpeed = 120f;
     // Start is called before the first frame update
     void Start()
     {
         Initialize();
-        lives = 15;
+        health = 15;
         moveSpeed = 2f;
     }
 
@@ -20,7 +20,7 @@ public class Player : Unit, IMovable, IDamagable
     }
     public override void Move()
     {
-        if (lives > 0)
+        if (health > 0)
         {
             if (Input.GetAxis("Vertical") == 0) {
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -41,6 +41,5 @@ public class Player : Unit, IMovable, IDamagable
             transform.Rotate(Vector3.up*rotationSpeed*Time.deltaTime * Input.GetAxis("Horizontal"));
             
         }
-    }
-   
+    }   
 }

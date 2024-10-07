@@ -11,7 +11,7 @@ public class Elf : Unit, IMovable, IDamagable
     {        
         Initialize();
         moveSpeed = 2f;
-        lives = 5;
+        health = 5;
         r = GetComponentInChildren<Renderer>();
 
     }
@@ -28,7 +28,7 @@ public class Elf : Unit, IMovable, IDamagable
     private void ToggleVisibility() {
       
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > 2f && r.enabled && lives > 0)
+        if (elapsedTime > 2f && r.enabled && health > 0)
         {
             r.enabled = false;
             elapsedTime = 0f;
