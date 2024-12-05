@@ -8,7 +8,7 @@ public class ShootFromCamera : MonoBehaviour
     {
         floor = new Plane(Vector3.up, 0);
 
-        Unit.OnDeath += SomeoneDied;
+        //Unit.OnDeath += SomeoneDied;
     }
     // Update is called once per frame
     void Update()

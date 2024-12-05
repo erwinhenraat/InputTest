@@ -13,11 +13,7 @@ public class HandleLife : MonoBehaviour
     public int Lives {
         get { 
             return lives;
-        }
-        set {
-            lives = value;
-            Debug.Log("added "+ value +" life");
-        }       
+        }    
     }
 
     void Start()

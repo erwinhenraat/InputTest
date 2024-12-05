@@ -10,7 +10,7 @@ public class Move : MonoBehaviour
         animator = GetComponent<Animator>();
         HandleLife.onHeroDeath += OnDeath;
 
-        GetComponent<HandleLife>().Lives += 9;
+       //GetComponent<HandleLife>().Lives += 9;
     }
     void Update()
     {        
